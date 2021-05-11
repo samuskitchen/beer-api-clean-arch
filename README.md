@@ -1,5 +1,5 @@
 # Beer Api
-This is a project for a challenge in Golang. This api is responsible for saving the information of the beers and making currency exchange at the time of payment.
+This is a project for a training in Golang. This api is responsible for saving the information of the beers and making currency exchange at the time of payment.
 
 The following technologies were used in this project:
 - [Golang 1.15](https://golang.org/dl/)
@@ -129,7 +129,7 @@ docker-compose up -d --build
   ERROR: could not find an available, non-overlapping IPv4 address pool among the defaults to assign to the network
   ```
 
-  it is because you have an active VPN turn it off or disconnect so the docker compose can work
+  it is because you have an active VPN turn it off or disconnect, so the docker compose can work
 
 
 #### Down Api
