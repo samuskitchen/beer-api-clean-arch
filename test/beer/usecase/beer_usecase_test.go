@@ -44,10 +44,11 @@ func Test_beerUsecase_CreateBeerWithId(t *testing.T) {
 	t.Run("Error SQL With ID Create Usecase", func(tt *testing.T) {
 
 		mockUsecase := &repoMock.BeerUsecase{}
+		mockBeerRepository := &repoMock.BeerRepository{}
 		mockCurrencyLayer := &repoMock.CurrencyLayerRepository{}
 
-		testBeerUsecase := usecase.NewBeerUsecase(mockUsecase, mockCurrencyLayer)
-		mockUsecase.On("CreateBeerWithId", mock.Anything, mock.AnythingOfType("*domain.Beer")).Return(errors.New("error trace test"))
+		testBeerUsecase := usecase.NewBeerUsecase(mockBeerRepository, mockCurrencyLayer)
+		mockBeerRepository.On("CreateBeerWithId", mock.Anything, mock.AnythingOfType("*domain.Beer")).Return(errors.New("error trace test"))
 
 		ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 		defer cancel()
@@ -60,10 +61,11 @@ func Test_beerUsecase_CreateBeerWithId(t *testing.T) {
 	t.Run("Create With ID Usecase", func(tt *testing.T) {
 
 		mockUsecase := &repoMock.BeerUsecase{}
+		mockBeerRepository := &repoMock.BeerRepository{}
 		mockCurrencyLayer := &repoMock.CurrencyLayerRepository{}
 
-		testBeerUsecase := usecase.NewBeerUsecase(mockUsecase, mockCurrencyLayer)
-		mockUsecase.On("CreateBeerWithId", mock.Anything, mock.AnythingOfType("*domain.Beer")).Return(nil)
+		testBeerUsecase := usecase.NewBeerUsecase(mockBeerRepository, mockCurrencyLayer)
+		mockBeerRepository.On("CreateBeerWithId", mock.Anything, mock.AnythingOfType("*domain.Beer")).Return(nil)
 
 		ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 		defer cancel()
@@ -80,10 +82,11 @@ func Test_beerUsecase_GetAllBeers(t *testing.T) {
 	t.Run("Error Get All Beers Usecase", func(tt *testing.T) {
 
 		mockUsecase := &repoMock.BeerUsecase{}
+		mockBeerRepository := &repoMock.BeerRepository{}
 		mockCurrencyLayer := &repoMock.CurrencyLayerRepository{}
 
-		testBeerUsecase := usecase.NewBeerUsecase(mockUsecase, mockCurrencyLayer)
-		mockUsecase.On("GetAllBeers", mock.Anything).Return(nil, errors.New("error trace test"))
+		testBeerUsecase := usecase.NewBeerUsecase(mockBeerRepository, mockCurrencyLayer)
+		mockBeerRepository.On("GetAllBeers", mock.Anything).Return(nil, errors.New("error trace test"))
 
 		ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 		defer cancel()
@@ -97,10 +100,11 @@ func Test_beerUsecase_GetAllBeers(t *testing.T) {
 	t.Run("(Not Found) Get All Beers Usecase", func(tt *testing.T) {
 
 		mockUsecase := &repoMock.BeerUsecase{}
+		mockBeerRepository := &repoMock.BeerRepository{}
 		mockCurrencyLayer := &repoMock.CurrencyLayerRepository{}
 
-		testBeerUsecase := usecase.NewBeerUsecase(mockUsecase, mockCurrencyLayer)
-		mockUsecase.On("GetAllBeers", mock.Anything).Return(nil, nil)
+		testBeerUsecase := usecase.NewBeerUsecase(mockBeerRepository, mockCurrencyLayer)
+		mockBeerRepository.On("GetAllBeers", mock.Anything).Return(nil, nil)
 
 		ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 		defer cancel()
@@ -114,10 +118,11 @@ func Test_beerUsecase_GetAllBeers(t *testing.T) {
 	t.Run("Get All Beers Usecase", func(tt *testing.T) {
 
 		mockUsecase := &repoMock.BeerUsecase{}
+		mockBeerRepository := &repoMock.BeerRepository{}
 		mockCurrencyLayer := &repoMock.CurrencyLayerRepository{}
 
-		testBeerUsecase := usecase.NewBeerUsecase(mockUsecase, mockCurrencyLayer)
-		mockUsecase.On("GetAllBeers", mock.Anything).Return(dataBeers(), nil)
+		testBeerUsecase := usecase.NewBeerUsecase(mockBeerRepository, mockCurrencyLayer)
+		mockBeerRepository.On("GetAllBeers", mock.Anything).Return(dataBeers(), nil)
 
 		ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 		defer cancel()
@@ -134,10 +139,11 @@ func Test_beerUsecase_GetBeerById(t *testing.T) {
 	t.Run("Error Get Beer by ID Usecase", func(tt *testing.T) {
 
 		mockUsecase := &repoMock.BeerUsecase{}
+		mockBeerRepository := &repoMock.BeerRepository{}
 		mockCurrencyLayer := &repoMock.CurrencyLayerRepository{}
 
-		testBeerUsecase := usecase.NewBeerUsecase(mockUsecase, mockCurrencyLayer)
-		mockUsecase.On("GetBeerById", mock.Anything, mock.AnythingOfType("uint")).Return(domain.Beer{}, errors.New("error trace test"))
+		testBeerUsecase := usecase.NewBeerUsecase(mockBeerRepository, mockCurrencyLayer)
+		mockBeerRepository.On("GetBeerById", mock.Anything, mock.AnythingOfType("uint")).Return(domain.Beer{}, errors.New("error trace test"))
 
 		ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 		defer cancel()
@@ -151,10 +157,11 @@ func Test_beerUsecase_GetBeerById(t *testing.T) {
 	t.Run("(Not Found) Get Beer by ID Usecase", func(tt *testing.T) {
 
 		mockUsecase := &repoMock.BeerUsecase{}
+		mockBeerRepository := &repoMock.BeerRepository{}
 		mockCurrencyLayer := &repoMock.CurrencyLayerRepository{}
 
-		testBeerUsecase := usecase.NewBeerUsecase(mockUsecase, mockCurrencyLayer)
-		mockUsecase.On("GetBeerById", mock.Anything, mock.AnythingOfType("uint")).Return(domain.Beer{}, nil)
+		testBeerUsecase := usecase.NewBeerUsecase(mockBeerRepository, mockCurrencyLayer)
+		mockBeerRepository.On("GetBeerById", mock.Anything, mock.AnythingOfType("uint")).Return(domain.Beer{}, nil)
 
 		ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 		defer cancel()
@@ -168,10 +175,11 @@ func Test_beerUsecase_GetBeerById(t *testing.T) {
 	t.Run("Get Beer by ID Usecase", func(tt *testing.T) {
 
 		mockUsecase := &repoMock.BeerUsecase{}
+		mockBeerRepository := &repoMock.BeerRepository{}
 		mockCurrencyLayer := &repoMock.CurrencyLayerRepository{}
 
-		testBeerUsecase := usecase.NewBeerUsecase(mockUsecase, mockCurrencyLayer)
-		mockUsecase.On("GetBeerById", mock.Anything, mock.AnythingOfType("uint")).Return(dataBeers()[0], nil)
+		testBeerUsecase := usecase.NewBeerUsecase(mockBeerRepository, mockCurrencyLayer)
+		mockBeerRepository.On("GetBeerById", mock.Anything, mock.AnythingOfType("uint")).Return(dataBeers()[0], nil)
 
 		ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 		defer cancel()
@@ -189,10 +197,11 @@ func Test_beerUsecase_GetOneBoxPrice(t *testing.T) {
 	t.Run("(Error Get Beer By Id) Get One Box Price Usecase", func(tt *testing.T) {
 
 		mockUsecase := &repoMock.BeerUsecase{}
+		mockBeerRepository := &repoMock.BeerRepository{}
 		mockCurrencyLayer := &repoMock.CurrencyLayerRepository{}
 
-		testBeerUsecase := usecase.NewBeerUsecase(mockUsecase, mockCurrencyLayer)
-		mockUsecase.On("GetBeerById", mock.Anything, mock.AnythingOfType("uint")).Return(domain.Beer{}, errors.New("error trace test"))
+		testBeerUsecase := usecase.NewBeerUsecase(mockBeerRepository, mockCurrencyLayer)
+		mockBeerRepository.On("GetBeerById", mock.Anything, mock.AnythingOfType("uint")).Return(domain.Beer{}, errors.New("error trace test"))
 
 		ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 		defer cancel()
@@ -206,10 +215,11 @@ func Test_beerUsecase_GetOneBoxPrice(t *testing.T) {
 	t.Run("(Not Found) Get One Box Price Usecase", func(tt *testing.T) {
 
 		mockUsecase := &repoMock.BeerUsecase{}
+		mockBeerRepository := &repoMock.BeerRepository{}
 		mockCurrencyLayer := &repoMock.CurrencyLayerRepository{}
 
-		testBeerUsecase := usecase.NewBeerUsecase(mockUsecase, mockCurrencyLayer)
-		mockUsecase.On("GetBeerById", mock.Anything, mock.AnythingOfType("uint")).Return(domain.Beer{}, nil)
+		testBeerUsecase := usecase.NewBeerUsecase(mockBeerRepository, mockCurrencyLayer)
+		mockBeerRepository.On("GetBeerById", mock.Anything, mock.AnythingOfType("uint")).Return(domain.Beer{}, nil)
 
 		ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 		defer cancel()
@@ -223,10 +233,11 @@ func Test_beerUsecase_GetOneBoxPrice(t *testing.T) {
 	t.Run("(Error Get Currency) Get One Box Price Usecase", func(tt *testing.T) {
 
 		mockUsecase := &repoMock.BeerUsecase{}
+		mockBeerRepository := &repoMock.BeerRepository{}
 		mockCurrencyLayer := &repoMock.CurrencyLayerRepository{}
 
-		testBeerUsecase := usecase.NewBeerUsecase(mockUsecase, mockCurrencyLayer)
-		mockUsecase.On("GetBeerById", mock.Anything, mock.AnythingOfType("uint")).Return(dataBeers()[0], nil)
+		testBeerUsecase := usecase.NewBeerUsecase(mockBeerRepository, mockCurrencyLayer)
+		mockBeerRepository.On("GetBeerById", mock.Anything, mock.AnythingOfType("uint")).Return(dataBeers()[0], nil)
 		mockCurrencyLayer.On("GetCurrency", mock.Anything, mock.Anything).Return([]float64{0, 0}, errors.New("error get currency")).Once()
 
 		ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
@@ -241,10 +252,11 @@ func Test_beerUsecase_GetOneBoxPrice(t *testing.T) {
 	t.Run("Get One Box Price Usecase", func(tt *testing.T) {
 
 		mockUsecase := &repoMock.BeerUsecase{}
+		mockBeerRepository := &repoMock.BeerRepository{}
 		mockCurrencyLayer := &repoMock.CurrencyLayerRepository{}
 
-		testBeerUsecase := usecase.NewBeerUsecase(mockUsecase, mockCurrencyLayer)
-		mockUsecase.On("GetBeerById", mock.Anything, mock.AnythingOfType("uint")).Return(dataBeers()[0], nil)
+		testBeerUsecase := usecase.NewBeerUsecase(mockBeerRepository, mockCurrencyLayer)
+		mockBeerRepository.On("GetBeerById", mock.Anything, mock.AnythingOfType("uint")).Return(dataBeers()[0], nil)
 		mockCurrencyLayer.On("GetCurrency", mock.Anything, mock.Anything).Return([]float64{1, 2}, nil).Once()
 
 		ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
