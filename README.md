@@ -124,6 +124,14 @@ cd beer-api-clean-arch
 docker-compose up -d --build
 ```
 
+* If you get this following error :
+  ```
+  ERROR: could not find an available, non-overlapping IPv4 address pool among the defaults to assign to the network
+  ```
+
+  it is because you have an active VPN turn it off or disconnect so the docker compose can work
+
+
 #### Down Api
 ```
 docker-compose down --remove-orphans --volumes

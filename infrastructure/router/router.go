@@ -4,7 +4,7 @@ import (
 	"net/http"
 
 	"github.com/go-chi/chi"
-	v1 "github.com/samuskitchen/beer-api-clean-arch/beer/delivery/v1"
+	v1 "github.com/samuskitchen/beer-api-clean-arch/application/beer/delivery/v1"
 	"github.com/samuskitchen/beer-api-clean-arch/infrastructure/database"
 )
 
