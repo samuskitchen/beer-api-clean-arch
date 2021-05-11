@@ -62,9 +62,9 @@ func (b *beerUsecase) CreateBeerWithId(ctx context.Context, beers *domain.Beer) 
 
 // GetOneBoxPrice Method that returns the currency of payment and beer as the base currency of conversion to the dollar,
 // the order of the returned values are: currencyPay, currencyBeer
-func (b *beerUsecase) GetOneBoxPrice(ctx context.Context, id int, currency string, quantity int) (float64, error) {
+func (b *beerUsecase) GetOneBoxPrice(ctx context.Context, id uint, currency string, quantity int) (float64, error) {
 
-	beerResult, err := b.beerRepo.GetBeerById(ctx, uint(id))
+	beerResult, err := b.beerRepo.GetBeerById(ctx, id)
 	if err != nil {
 		return 0, err
 	}

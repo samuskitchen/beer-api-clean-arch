@@ -14,7 +14,7 @@ import (
 	"github.com/samuskitchen/beer-api-clean-arch/beer/usecase"
 	"github.com/samuskitchen/beer-api-clean-arch/currency/adapter"
 	"github.com/samuskitchen/beer-api-clean-arch/domain"
-	"github.com/samuskitchen/beer-api-clean-arch/infrastructure/datastorage"
+	"github.com/samuskitchen/beer-api-clean-arch/infrastructure/database"
 	"github.com/samuskitchen/beer-api-clean-arch/infrastructure/middleware"
 )
 
@@ -24,7 +24,7 @@ type BeerRouter struct {
 }
 
 // NewBeerHandler constructor
-func NewBeerHandler(db *datastorage.Data, client *http.Client) *BeerRouter {
+func NewBeerHandler(db *database.Data, client *http.Client) *BeerRouter {
 	return &BeerRouter{
 		Usecase: usecase.NewBeerUsecase(repository.NewBeerRepository(db), adapter.NewCurrencyAdapter(client)),
 	}
@@ -204,7 +204,7 @@ func (br *BeerRouter) GetOneBoxPriceHandler(w http.ResponseWriter, r *http.Reque
 		return
 	}
 
-	total, err := br.Usecase.GetOneBoxPrice(ctx, id, currencyStr, quantity)
+	total, err := br.Usecase.GetOneBoxPrice(ctx, uint(id), currencyStr, quantity)
 	if err != nil {
 		_ = middleware.HTTPError(w, r, http.StatusBadRequest, err.Error())
 		return

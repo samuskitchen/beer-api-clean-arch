@@ -5,11 +5,11 @@ import (
 
 	"github.com/go-chi/chi"
 	v1 "github.com/samuskitchen/beer-api-clean-arch/beer/delivery/v1"
-	"github.com/samuskitchen/beer-api-clean-arch/infrastructure/datastorage"
+	"github.com/samuskitchen/beer-api-clean-arch/infrastructure/database"
 )
 
 // Routes returns the API V1 Handler with configuration.
-func Routes(conn *datastorage.Data) http.Handler {
+func Routes(conn *database.Data) http.Handler {
 	router := chi.NewRouter()
 
 	br := v1.NewBeerHandler(conn, http.DefaultClient)

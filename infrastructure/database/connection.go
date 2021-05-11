@@ -1,4 +1,4 @@
-package datastorage
+package database
 
 import (
 	"database/sql"

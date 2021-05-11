@@ -10,7 +10,7 @@ import (
 
 	"github.com/go-chi/chi"
 	chiMiddleware "github.com/go-chi/chi/middleware"
-	"github.com/samuskitchen/beer-api-clean-arch/infrastructure/datastorage"
+	"github.com/samuskitchen/beer-api-clean-arch/infrastructure/database"
 	"github.com/samuskitchen/beer-api-clean-arch/infrastructure/middleware"
 )
 
@@ -25,7 +25,7 @@ func (srv *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 }
 
 // newServer initialized a Routes Server with configuration.
-func newServer(port string, conn *datastorage.Data) *Server {
+func newServer(port string, conn *database.Data) *Server {
 
 	router := chi.NewRouter()
 

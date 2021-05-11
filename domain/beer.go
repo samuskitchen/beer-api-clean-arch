@@ -26,7 +26,7 @@ type BeerUsecase interface {
 	GetAllBeers(ctx context.Context) ([]Beer, error)
 	GetBeerById(ctx context.Context, id uint) (Beer, error)
 	CreateBeerWithId(ctx context.Context, beers *Beer) error
-	GetOneBoxPrice(ctx context.Context, id int, currency string, quantity int) (float64, error)
+	GetOneBoxPrice(ctx context.Context, id uint, currency string, quantity int) (float64, error)
 }
 
 type BeerRepository interface {

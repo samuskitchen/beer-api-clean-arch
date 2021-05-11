@@ -4,14 +4,14 @@ import (
 	"database/sql"
 	"log"
 
-	"github.com/samuskitchen/beer-api-clean-arch/infrastructure/datastorage"
+	"github.com/samuskitchen/beer-api-clean-arch/infrastructure/database"
 )
 
 // Start started api
 func Start(port string) {
 
 	// connection to the database.
-	db := datastorage.New()
+	db := database.New()
 	defer func(DB *sql.DB) {
 		err := DB.Close()
 		if err != nil {
@@ -20,7 +20,7 @@ func Start(port string) {
 	}(db.DB)
 
 	//Versioning the database
-	err := datastorage.VersionedDB(db)
+	err := database.VersionedDB(db)
 	if err != nil {
 		log.Fatal(err)
 	}

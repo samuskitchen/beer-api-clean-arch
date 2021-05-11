@@ -7,15 +7,15 @@ import (
 	"log"
 
 	"github.com/samuskitchen/beer-api-clean-arch/domain"
-	"github.com/samuskitchen/beer-api-clean-arch/infrastructure/datastorage"
+	"github.com/samuskitchen/beer-api-clean-arch/infrastructure/database"
 )
 
 type postgresBeerRepository struct {
-	Conn *datastorage.Data
+	Conn *database.Data
 }
 
 // NewBeerRepository constructor
-func NewBeerRepository(Connection *datastorage.Data) domain.BeerRepository {
+func NewBeerRepository(Connection *database.Data) domain.BeerRepository {
 	return &postgresBeerRepository{
 		Conn: Connection,
 	}
