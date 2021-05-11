@@ -95,7 +95,7 @@ go tool cover -html=coverage.out
 ````
 
 #### Beer Test Repository
-The command to run the handler tests, and the command to generate the report
+The command to run the repository tests, and the command to generate the report
 ````
 go test -v -coverprofile=coverage.out -coverpkg=./application/beer/repository/... ./test/beer/repository
 
@@ -103,11 +103,11 @@ go tool cover -html=coverage.out
 ````
 
 #### Beer Test Use case
-The command to run the handler tests, and the command to generate the report for these tests redis must be above
+The command to run the use case tests, and the command to generate the report for these tests redis must be above
 ````
 go test -v -coverprofile=coverage_integration.out -coverpkg=./application/beer/usecase/ ./test/beer/usecase
 
-go tool cover -html=coverage_integration.out
+go tool cover -html=coverage.out
 ````
 
 ## Quick Run Project
