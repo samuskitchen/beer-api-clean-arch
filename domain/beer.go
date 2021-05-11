@@ -6,7 +6,7 @@ import (
 )
 
 // Beer Data of Beer
-// swagger:model
+// swagger:domain
 type Beer struct {
 	ID uint `json:"id,omitempty"`
 	// Required: true

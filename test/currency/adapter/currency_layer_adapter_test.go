@@ -6,7 +6,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/samuskitchen/beer-api-clean-arch/currency/adapter"
+	"github.com/samuskitchen/beer-api-clean-arch/application/currency/adapter"
 	"github.com/samuskitchen/beer-api-clean-arch/domain"
 	"github.com/stretchr/testify/assert"
 

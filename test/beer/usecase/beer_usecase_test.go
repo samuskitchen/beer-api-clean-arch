@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/samuskitchen/beer-api-clean-arch/beer/usecase"
+	"github.com/samuskitchen/beer-api-clean-arch/application/beer/usecase"
 	"github.com/samuskitchen/beer-api-clean-arch/domain"
 	repoMock "github.com/samuskitchen/beer-api-clean-arch/domain/mocks"
 	"github.com/stretchr/testify/assert"

@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"github.com/DATA-DOG/go-sqlmock"
-	repository "github.com/samuskitchen/beer-api-clean-arch/beer/repository/postgres"
+	repository "github.com/samuskitchen/beer-api-clean-arch/application/beer/repository/postgres"
 	"github.com/samuskitchen/beer-api-clean-arch/domain"
 	"github.com/samuskitchen/beer-api-clean-arch/infrastructure/database"
 	"github.com/stretchr/testify/assert"

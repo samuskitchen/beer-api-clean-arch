@@ -15,7 +15,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
 
-	v1 "github.com/samuskitchen/beer-api-clean-arch/beer/delivery/v1"
+	v1 "github.com/samuskitchen/beer-api-clean-arch/application/beer/delivery/v1"
 	repoMock "github.com/samuskitchen/beer-api-clean-arch/domain/mocks"
 )
 
