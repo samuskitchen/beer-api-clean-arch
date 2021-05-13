@@ -26,11 +26,11 @@ import (
 	"os"
 
 	_ "github.com/joho/godotenv/autoload"
-	infrastructure "github.com/samuskitchen/beer-api-clean-arch/infrastructure/router"
+	"github.com/samuskitchen/beer-api-clean-arch/infrastructure/router"
 )
 
 func main() {
 	log.Println("stating API cmd")
 	port := os.Getenv("API_PORT")
-	infrastructure.Start(port)
+	router.Start(port)
 }
