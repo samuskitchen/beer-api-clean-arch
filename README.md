@@ -32,17 +32,17 @@ The following technologies were used in this project:
 This is an automatic mock generator using mockery, the first thing we must do is go to the path of the file that we want to autogenerate:
 
 Download the library
-```
+```go
 go get -u github.com/vektra/mockery
 ```
 
 We enter the route where you are
-```
+```bash
 cd path
 ```
 
 After entering the route we must execute the following command, Repository this is name the interface
-```
+```bash
 mockery --name Repository
 ```
 
@@ -62,12 +62,12 @@ swagger serve -F=redoc swagger.json
 ```
 
 Raise the server without automatic start, with specific port and path
-````
+````bash
 swagger serve -F=redoc --host=0.0.0.0 --port=8082 --no-open swagger.json
 ````
 
 You can get more information in the Swagger documentation:
-```
+```http request
 localhost:8082/docs
 ```
 
@@ -76,19 +76,19 @@ These are the commands to run the unit and integration tests of the project
 
 #### Execute All Test
 This is the command to run the white box tests, and the test report command
-```
+```go
 go test -v -coverprofile=coverage.out -coverpkg=./application/... ./test/...
 
 go tool cover -html=coverage.out
 ```
 This command gets the total coverage of the project
-```
+```go
 go tool cover -func coverage.out
 ```
 
 #### Beer Test Handler
 The command to run the handler tests, and the command to generate the report
-````
+````go
 go test -v -coverprofile=coverage.out -coverpkg=./application/beer/delivery/v1/ ./test/beer/delivery/v1
 
 go tool cover -html=coverage.out
@@ -96,7 +96,7 @@ go tool cover -html=coverage.out
 
 #### Beer Test Repository
 The command to run the repository tests, and the command to generate the report
-````
+````go
 go test -v -coverprofile=coverage.out -coverpkg=./application/beer/repository/... ./test/beer/repository
 
 go tool cover -html=coverage.out
@@ -104,7 +104,7 @@ go tool cover -html=coverage.out
 
 #### Beer Test Use case
 The command to run the use case tests, and the command to generate the report for these tests redis must be above
-````
+````go
 go test -v -coverprofile=coverage_integration.out -coverpkg=./application/beer/usecase/ ./test/beer/usecase
 
 go tool cover -html=coverage.out
@@ -113,14 +113,14 @@ go tool cover -html=coverage.out
 ## Quick Run Project
 First clone the repo then go to beer-api-clean-arch folder. After that build your image and run by docker. Make sure you have docker in your machine.
 
-```
+```bash
 git clone https://github.com/samuskitchen/beer-api-clean-arch.git
 
 cd beer-api-clean-arch
 ```
 
 #### Start Api
-```
+```bash
 docker-compose up -d --build
 ```
 
@@ -133,6 +133,6 @@ docker-compose up -d --build
 
 
 #### Down Api
-```
+```bash
 docker-compose down --remove-orphans --volumes
 ```

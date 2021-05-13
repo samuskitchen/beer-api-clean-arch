@@ -7,6 +7,7 @@ require (
 	github.com/go-chi/chi v1.5.4
 	github.com/go-chi/cors v1.2.0
 	github.com/golang-migrate/migrate/v4 v4.14.1
+	github.com/google/go-cmp v0.5.5 // indirect
 	github.com/joho/godotenv v1.3.0
 	github.com/lib/pq v1.10.1
 	github.com/stretchr/testify v1.7.0

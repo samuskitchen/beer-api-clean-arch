@@ -13,7 +13,7 @@ func Routes(conn *database.Data) http.Handler {
 	router := chi.NewRouter()
 
 	br := v1.NewBeerHandler(conn, http.DefaultClient)
-	router.Mount("/beer", routesBeer(br))
+	router.Mount("/beers", routesBeer(br))
 
 	return router
 }
