@@ -3,19 +3,16 @@ This is a project for a training in Golang. This api is responsible for saving t
 
 The following technologies were used in this project:
 - [Golang 1.15](https://golang.org/dl/)
+- [go-sqlmock](https://github.com/DATA-DOG/go-sqlmock)
 - [go-chi](https://github.com/go-chi/chi)
 - [go-chi/cors](https://github.com/go-chi/cors)
-- [pq](https://github.com/lib/pq)
-- [godotenv](https://github.com/joho/godotenv)
-- [yalm](https://github.com/go-yaml/yaml)
-- [errors](https://github.com/pkg/errors)
-- [errwrap](https://github.com/hashicorp/errwrap)
-- [testify](https://github.com/stretchr/testify)
+- [golang-migrate](github.com/golang-migrate/migrate/v4)
 - [go-cmp](https://github.com/google/go-cmp)
-- [mockery](https://github.com/vektra/mockery)
-- [go-sqlmock](https://github.com/DATA-DOG/go-sqlmock)
+- [godotenv](https://github.com/joho/godotenv)
+- [pq](https://github.com/lib/pq)
+- [testify](https://github.com/stretchr/testify)
+- [yalm](https://github.com/go-yaml/yaml)
 - [PostgreSQL](https://www.postgresql.org/download/)
-- [golang-migrate](https://github.com/golang-migrate/migrate/)
 
 ## Requirements
 - Golang 14+
