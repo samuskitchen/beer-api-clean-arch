@@ -36,7 +36,7 @@ jobs:
         run: go build ./...
 
       - name: Test
-        run: go test -v -coverprofile=coverage.out -coverpkg=./application/... ./test/...
+        run: go test -v -json -coverprofile=coverage.out -coverpkg=./application/... ./test/... > result.json
 
 
   sonarcloud:
