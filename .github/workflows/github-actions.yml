@@ -58,8 +58,6 @@ jobs:
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v1.6
-        with:
-          projectBaseDir: beer-api-clean-arch
 
         env:
           GITHUB_TOKEN: ${{ secrets.PACKAGE_TOKEN }}  # Needed to get PR information, if any
