@@ -36,18 +36,24 @@ jobs:
         run: go build ./...
 
       - name: Test
-        run: go test -v -json -coverprofile=coverage.out -coverpkg=./application/... ./test/... > result.json
-
+        run: go test -v -coverprofile=coverage.out -coverpkg=./application/... ./test/...
 
   sonarcloud:
+    needs: build
     name: SonarCloud
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Clone Repository
+        uses: actions/checkout@v3
+
+      - name: Download code coverage results
+        uses: actions/checkout@v2
         with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+          name: code-coverage-report
+          path: bin
+
       - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
+        uses: SonarSource/sonarcloud-github-action@v3
         env:
           GITHUB_TOKEN: ${{ secrets.PACKAGE_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
