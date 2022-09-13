@@ -27,7 +27,7 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v3
         with:
-          go-version: 1.15
+          go-version: 1.15.x
 
       - name: Configure git for private modules
         run: git config --global url."https://${TOKEN}:${TOKEN}@github.com".insteadOf "https://github.com"
@@ -43,15 +43,9 @@ jobs:
     name: SonarCloud
     runs-on: ubuntu-latest
     steps:
-      - name: Clone Repository
-        uses: actions/checkout@v3
-
-      - name: Download code coverage results
-        uses: actions/checkout@v2
-        with:
-          name: code-coverage-report
-          path: bin
-
+      - uses: actions/checkout@v2
+        #with:
+          #fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
