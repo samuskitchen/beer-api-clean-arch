@@ -1,0 +1,69 @@
+name: Go
+
+on:
+  push:
+    branches:
+      - master
+      - develop
+      - 'feature/**'
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    env:
+      GOPRIVATE: "github.com/samuskitchen//*"
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: 1.15.x
+
+      - name: Configure git for private modules
+        run: git config --global url."https://${TOKEN}:${TOKEN}@github.com".insteadOf "https://github.com"
+
+      - name: Build
+        run: go build ./...
+
+      - name: Test
+        run: go test -v -coverprofile=coverage.out -coverpkg=./application/... ./test/...
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.PACKAGE_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+#      - name: Archive code coverage results
+#        uses: actions/upload-artifact@v3
+#        with:
+#          name: code-coverage-report
+#          path: coverage.out
+
+#  sonarcloud:
+#    needs: build
+#    name: SonarCloud
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Clone Repository
+#        uses: actions/checkout@v2
+#        with:
+#          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+#
+#      - name: Download code coverage results
+#        uses: actions/download-artifact@v3
+#        with:
+#          name: code-coverage-report
+#          path: coverage.out
+#
+#      - name: SonarCloud Scan
+#        uses: SonarSource/sonarcloud-github-action@v1.6
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.PACKAGE_TOKEN }}  # Needed to get PR information, if any
+#          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
